@@ -1,34 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Profile from "./components/Profile"
+import Card from "./components/Card"
+
+import jsonData from '../src/data.json'
+
+import React from "react"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [selectedTimeframe, setSelectedTimeframe] = React.useState("daily");
+
+  React.useEffect(() => {
+    const timeframes = ['daily', 'weekly', 'monthly'];
+    timeframes.forEach(data => {
+      if (data === selectedTimeframe) {
+          document.getElementById(data).style.color = "hsl(236, 100%, 87%)";
+      } else {
+          document.getElementById(data).style.color = "hsl(235, 45%, 61%)";
+      }
+  });
+}, [selectedTimeframe]);
+
+  const handleTimeframeChange = (timeframe) => {
+    setSelectedTimeframe(timeframe);
+    
+};
+
+  const cardData = jsonData.map((data, index) => {
+    return (
+      <Card 
+        timeframe={selectedTimeframe}
+        key={index}
+        {...data}
+      />
+    )
+  })
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <Profile handleTimeframeChange={handleTimeframeChange}/>
+      {cardData}
+    </div>
   )
 }
 

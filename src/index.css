@@ -1,69 +1,214 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  color: hsl(235, 45%, 61%);
+  font-family: 'Rubik', sans-serif;
+  font-size: 18px;
+  background-color: hsl(226, 43%, 10%);
+  
+}
+
+/* profile */
+
+.profile-container {
+  background-color: hsl(235, 46%, 20%);
+  margin-inline: 30px;
+  margin-top: 50px;
+}
+
+.profile {
+  background-color: hsl(246, 80%, 60%) ;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  gap: 18px;
+  padding-block: 30px;
+  padding-left: 30px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.profile-container,
+.profile,
+.card-container,
+.item-wrapper {
+  border-radius: 15px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.profile > img {
+  width: 50px;
+}
+
+.profile div h3 {
+  color: hsl(236, 100%, 87%);
+  font-weight: 400;
+}
+
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding-block: 20px;
+  color: inherit;
+}
+
+li {
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+li:hover {
+  color: hsl(236, 100%, 87%);
 }
+
+
+/* card */
+
+.card-container {
+  margin-inline: 30px;
+  margin-top: 20px;
+
+}
+
+.img-wrapper {
+  height: 35px;
+  position: relative;
+  overflow-y: hidden;
+}
+
+
+.card-container img {
+  display: block;
+  width: 60px;
+  position: absolute;
+  right: 10px;
+  top: -3px;
+}
+
+.item-wrapper {
+  width: 100%;
+  background-color: hsl(235, 46%, 20%);
+  position: relative;
+  z-index: 0;
+  padding: 20px;
+  display: grid;
+  gap: 5px;
+  grid-template-areas: 
+  "a b"
+  "c d";
+}
+
+.item-wrapper h4 {grid-area: a;}
+.item-wrapper .fa-ellipsis {grid-area: b;}
+.item-wrapper h3 {grid-area: c;}
+.item-wrapper p {grid-area: d;}
+
+.fa-ellipsis,
+.item-wrapper h3,
+.item-wrapper h4,
+.item-wrapper p {
+  color: hsl(236, 100%, 87%);
+}
+
+h3 {
+  font-weight: 300;
+}
+
+h4 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.fa-ellipsis,
+.item-wrapper p {
+  justify-self: end;
+  align-self: center;
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .app-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 180px);
+    grid-gap: 20px;
+  }
+  .profile-container {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  
+  .profile-container,
+  .card-container {
+    width: 100%;
+    height: 100%;
+    margin-top: unset;
+    margin-inline: unset;
+  }
+
+  .profile {
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-right: 30px;
+    height: 65%;
+  }
+
+  .profile > img {
+    align-self:flex-start;
+  }
+  .profile div p {
+    font-size: 10px;
+    margin-bottom: 3px;
+    font-weight: 500;
+  }
+
+  ul {
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 30px;
+  }
+
+  .card-container {
+    border-radius: 19px;
+  }
+  
+
+  .item-wrapper {
+    height: calc(100% - 35px);
+    grid-template-areas: 
+    "a b"
+    "c ."
+    "d .";   
+  }
+  .item-wrapper h4 {
+    grid-area: a;
+    font-size: 12px;
+  }
+  .item-wrapper .fa-ellipsis {grid-area: b;}
+  .item-wrapper h3 {
+    grid-area: c;
+    font-size: 2.1rem;
+    margin-top: 10px;
+  }
+  .item-wrapper p {
+      grid-area: d;
+      justify-self: start;
+    }
+}
+
+
