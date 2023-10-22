@@ -17,13 +17,13 @@ function App() {
       } else {
           document.getElementById(data).style.color = "hsl(235, 45%, 61%)";
       }
-  });
+  })
 }, [selectedTimeframe]);
 
   const handleTimeframeChange = (timeframe) => {
     setSelectedTimeframe(timeframe);
     
-};
+}
 
   const cardData = jsonData.map((data, index) => {
     return (

@@ -1,27 +1,27 @@
 
 const titleToImageMap = {
     "Work": {
-        "background": '../../public/images/icon-work.svg',
+        "background": '/images/icon-work.svg',
         "color": "hsl(15, 100%, 70%)"
     },
     "Play": {
-        "background": '../../public/images/icon-play.svg',
+        "background": '/images/icon-play.svg',
         "color": "hsl(195, 74%, 62%)"
     },
     "Study": {
-        "background": '../../public/images/icon-study.svg',
+        "background": '/images/icon-study.svg',
         "color": "hsl(348, 100%, 68%)"
     },
     "Exercise": {
-        "background": '../../public/images/icon-exercise.svg',
+        "background": '/images/icon-exercise.svg',
         "color": "hsl(145, 58%, 55%)"
     },
     "Social": {
-        "background": '../../public/images/icon-social.svg',
+        "background": '/images/icon-social.svg',
         "color": "hsl(264, 64%, 52%)"
     },
     "Self Care": {
-        "background": '../../public/images/icon-self-care.svg',
+        "background": '/images/icon-self-care.svg',
         "color": "hsl(43, 84%, 65%)"
     }    
   };

@@ -3,7 +3,7 @@ export default function Profile({handleTimeframeChange}) {
     return (
         <div className="profile-container"> 
             <div className="profile">
-                <img src="../../public/images/image-jeremy.png"/>
+                <img src="/images/image-jeremy.png"/>
                 <div>
                     <p>Report for</p>
                     <h3>Jeremy Robson</h3>
